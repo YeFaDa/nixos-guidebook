@@ -164,7 +164,7 @@ $ nix develop
 $ nix develop -c go test ./...
 
 # ⛔ 旧时代的 nix-shell -p go：仍可用，但与 flake 世界两套口径；
-#    新项目统一 nix develop（第 45 章有两者冲突的排错条目）
+#    新项目统一 nix develop（第 46 章有两者冲突的排错条目）
 ```
 
 **direnv + nix-direnv** 让「进入环境」这个动作彻底消失：在仓库根放一个 `.envrc`，内容一行 `use flake`，cd 进目录自动加载 devShell、离开自动卸载：
@@ -316,7 +316,7 @@ nixosConfigurations = {
 
 定义好之后，`nixos-rebuild switch --flake .#myhost` 即可部署（远程部署见第 31 章）。
 
-**home-manager 的两种使用模式**要分清，按场景选择：
+**home-manager 的两种使用模式**要分清，按场景选择（本章只讲「怎么接线」，概念、日常使用与迁移实战见第 45 章）：
 
 | | standalone（独立模式） | as-NixOS-module（模块模式） |
 | --- | --- | --- |
@@ -404,7 +404,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4      # 检出仓库（flake 依赖 git 树，见第 45 章）
+      - uses: actions/checkout@v4      # 检出仓库（flake 依赖 git 树，见第 46 章）
 
       - uses: cachix/install-nix-action@v31
         with:

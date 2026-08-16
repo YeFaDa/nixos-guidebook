@@ -102,7 +102,7 @@ rec {
 ⚠️ `rec` 的字段查找发生在**整个集合**上，等于给每个字段都开了一个微型 `with`。代价：
 
 1. 名字冲突静默遮蔽：`rec { x = 1; y = x; }` 里拼错成 `z` 不会报「未定义」，而是去找外层或报错位置诡异；
-2. 循环引用错误信息晦涩（`infinite recursion encountered`，定位见第 45 章）；
+2. 循环引用错误信息晦涩（`infinite recursion encountered`，定位见第 46 章）；
 3. 配合 override 的脱节问题（第 7 章）。
 
 ✅ 取舍建议：`rec` 只用于「纯字面量的自引用小集合」（比如一组常量）；涉及派生的自引用一律 `finalAttrs`（第 7 章）；涉及包集合的自引用交给 `lib.fix` / `makeScope`（第 32、39 章）。⛔ nixpkgs 评审对新的 `mkDerivation rec` 写法会直接要求迁移。

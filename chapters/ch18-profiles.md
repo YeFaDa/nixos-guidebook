@@ -366,7 +366,7 @@ flake 的输入写在 `flake.nix` 里，例如 `nixpkgs.url = "github:NixOS/nixp
 | 依赖说明 | 散落各处 | profile manifest | 代码即文档 |
 | 回滚 | generation | generation | generation + git revert |
 
-值得强调：`nix profile install nixpkgs#hello` 里 nixpkgs 经**全局 flake registry** 解析——安装的那一刻它确实锁定了具体 store 路径，但 `nix profile upgrade` 时会重新解析到最新，仍属「命令式 + 半锁定」，介于两个时代之间。真正声明式的终点是：把需要的包写进 NixOS 配置（第 24 章）或 home-manager，让「装了什么」成为代码的输出而非操作的历史。
+值得强调：`nix profile install nixpkgs#hello` 里 nixpkgs 经**全局 flake registry** 解析——安装的那一刻它确实锁定了具体 store 路径，但 `nix profile upgrade` 时会重新解析到最新，仍属「命令式 + 半锁定」，介于两个时代之间。真正声明式的终点是：把需要的包写进 NixOS 配置（第 24 章）或 home-manager（第 45 章专讲），让「装了什么」成为代码的输出而非操作的历史。
 
 从 channel 工作流迁移到 flakes 时，值得逐项自检：
 

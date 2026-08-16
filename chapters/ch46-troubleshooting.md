@@ -1,10 +1,10 @@
-# 第 45 章 常见问题与排错手册
+# 第 46 章 常见问题与排错手册
 
 > **本章导读**：这是一本可以「从中间开始读」的手册。我们按求值期、构建期、系统运行、Flakes、环境与网络五个阶段归类，收录 28 个 Nix 与 NixOS 最高频的问题，每个都按「症状 → 根因 → 诊断 → 修复」四段展开，修复命令可直接复制粘贴。排错的总心法只有一句：**先读完整的报错**——Nix 的错误信息量很大，第一行告诉你哪一层失败，最后一行往往就是答案。
 
-使用建议：遇到问题时按「你卡在哪个阶段」跳到对应小节；45.6 的调试工具箱总表值得先通读一遍，知道手里有哪些武器，遇到问题才知道派谁上场。
+使用建议：遇到问题时按「你卡在哪个阶段」跳到对应小节；46.6 的调试工具箱总表值得先通读一遍，知道手里有哪些武器，遇到问题才知道派谁上场。
 
-## 45.1 求值期错误
+## 46.1 求值期错误
 
 求值期（evaluation）错误发生在「Nix 读你的配置做计算」的阶段，还没开始任何构建。共同特征是报错里没有 builder、没有 exit code，只有 attribute、value 之类的字眼。
 
@@ -120,7 +120,7 @@ environment.variables.MANPATH = toString pkgs.man-pages;
 
 ---
 
-## 45.2 构建期错误
+## 46.2 构建期错误
 
 构建期错误发生在派生已经开跑之后，报错里通常有 builder、exit code 与日志行。
 
@@ -259,7 +259,7 @@ $ sudo nix-collect-garbage -d
 
 ---
 
-## 45.3 系统运行问题
+## 46.3 系统运行问题
 
 这一节的问题发生在「系统已经装好、正在跑」的阶段。
 
@@ -411,7 +411,7 @@ nix.nixPath = [ "nixpkgs=${nixpkgs}" "flake:nixpkgs" ];  # ⚠️ 桥接用途�
 
 ---
 
-## 45.4 Flakes 相关
+## 46.4 Flakes 相关
 
 #### 问题 19：flake.lock 不更新 / git tree is dirty
 
@@ -515,7 +515,7 @@ $ sudo git config --global --add safe.directory /home/alice/my-config
 
 ---
 
-## 45.5 环境与网络
+## 46.5 环境与网络
 
 #### 问题 24：公司代理环境下无法下载
 
@@ -568,7 +568,7 @@ nix.settings.ssl-cert-file = "/etc/ssl/certs/ca-certificates.crt";  # 重建后�
 ```console
 # 非 NixOS：环境变量指向包含公司根证书的 bundle（对 nix 命令行生效）
 $ export NIX_SSL_CERT_FILE=/path/to/corp-bundle.pem
-# daemon 侧同样要设：放进 45.5 问题 24 的 override.conf Environment= 即可
+# daemon 侧同样要设：放进 46.5 问题 24 的 override.conf Environment= 即可
 ```
 
 #### 问题 26：中文 locale 乱码
@@ -639,7 +639,7 @@ time.hardwareClockInLocalTime = true;
 
 ---
 
-## 45.6 调试工具箱总表
+## 46.6 调试工具箱总表
 
 最后一节是全章的「武器架」。熟记每个工具的适用层，排错时按图索骥：
 
@@ -662,7 +662,7 @@ time.hardwareClockInLocalTime = true;
 
 三个使用提示：ELF 工具在 Nix 上有个语义要点——`ldd` 找不到解释器时报的错未必是缺库，先用 `patchelf --print-interpreter` 确认解释器路径存在；`nix path-info -rSh` 配合 `sort -h` 是「这个包怎么这么大」的标准开局；`nix-diff` 在「两台机器同一配置构建结果不同」时是唯一称手的放大镜。
 
-## 45.7 本章小结
+## 46.7 本章小结
 
 - 排错第一原则：读完整报错；Nix 报错的第一行定位层（求值/构建/运行），最后一行常常就是答案。
 - 求值期五连：infinite recursion 用 --show-trace 找环、裸 if 改 mkIf；attribute/undefined 是拼写与参数声明；multiple definitions 用优先级函数（mkDefault/mkForce）裁决。
@@ -672,7 +672,7 @@ time.hardwareClockInLocalTime = true;
 - 系统侧救命三招：switch --rollback、引导菜单选旧代、live USB 挂载 + nixos-enter 救援。
 - Flakes 的两大高频坑：新文件必须 git add（file not found 的第一嫌疑）；root 读写他人 git 仓库的 dubious ownership。
 - 代理与自签证书都要配置到 nix-daemon 层面（NIX_SSL_CERT_FILE / nix.envVars），shell 里 export 对 daemon 无效。
-- 把 45.6 的工具箱当作常备武器：eval 管求值、log 管构建、path-info/nix-tree 管闭包、nvd 管代际、systemd-analyze 管服务。
+- 把 46.6 的工具箱当作常备武器：eval 管求值、log 管构建、path-info/nix-tree 管闭包、nvd 管代际、systemd-analyze 管服务。
 
 ## 延伸阅读
 

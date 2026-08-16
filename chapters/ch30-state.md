@@ -12,7 +12,7 @@
 | `/nix/var/nix/db`、profiles、GC roots | store 数据库与各代注册信息 | 理论能、实践上重装更快 | 否 |
 | `/etc` | 大部分是指向 store 的符号链接与生成文件；少数真实文件（见 30.2） | 能：由配置生成 | 否——备份配置仓库本身即可 |
 | `/var` | 服务真实数据：PostgreSQL 数据、docker 卷、ACME 证书私钥、syncthing 索引 | **不能** | **是（按服务挑）** |
-| `/home` | 用户数据与 dotfiles | 不能（dotfiles 另有管理之道，第 44 章） | **是** |
+| `/home` | 用户数据与 dotfiles | 不能（dotfiles 另有管理之道，第 45 章） | **是** |
 | `/boot` | 内核与各代启动项 | 能：rebuild 重新生成 | 否 |
 | secrets 私钥（如 sops 的 age key） | 解密配置中机密的钥匙 | 不能（丢了就得全部重新加密） | **是（离线安全存放）** |
 | channel / flake lock | 版本指针 | channel 重新 `nix-channel --update` 即可；flake lock 在 git 仓库里 | 否（lock 随仓库走） |

@@ -723,7 +723,7 @@ nixos-config/
 └── secrets/             # 加密后的机密（第 30 章的 sops-nix/agenix）
 ```
 
-把这份仓库放进 git，你就同时拥有了：变更历史（git log）、代码评审（PR）、灾难恢复（clone + rebuild）。dotfiles（用户级配置）的管理策略与常见工具对比在第 44 章实战篇展开。
+把这份仓库放进 git，你就同时拥有了：变更历史（git log）、代码评审（PR）、灾难恢复（clone + rebuild）。dotfiles（用户级配置）的管理策略与常见工具对比在第 45 章实战篇展开。
 
 ## 24.11 本章小结
 

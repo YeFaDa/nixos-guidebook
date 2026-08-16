@@ -60,7 +60,7 @@ $ nix search nixpkgs "fuzzy finder"     # 搜索包（可加 -u unstable）
 $ nix eval nixpkgs#hello.version        # 求值任意属性
 $ nix eval --raw nixpkgs#hello.name
 $ nix eval --json .#nixosConfigurations.myhost.config.services.nginx.port
-$ nix eval --show-trace .#x             # 求值错误带全堆栈（排错必开，第 45 章）
+$ nix eval --show-trace .#x             # 求值错误带全堆栈（排错必开，第 46 章）
 $ nix repl                               # 交互求值：:t 类型 / :p 完整打印 / :lf 载入 flake / :q 退出
 ```
 
@@ -138,6 +138,8 @@ $ home-manager generations               # 代清单
 $ home-manager build                     # 只构建不切换
 ```
 
+概念、模式选择与迁移实战见第 45 章。
+
 ## B.5 诊断与观测
 
 ```console
@@ -183,4 +185,4 @@ $ nix build nixpkgs#hello   # 缓存命中即自动补齐
 
 - 新 CLI 全索引：https://nixos.org/manual/nix/stable/command/new-cli/nix
 - NixOS 管理：https://nixos.org/manual/nixos/stable/#sec-changing-config
-- 第 45 章的排错场景大量使用本附录命令。
+- 第 46 章的排错场景大量使用本附录命令。

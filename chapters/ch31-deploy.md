@@ -69,7 +69,7 @@ $ nixos-rebuild switch --flake .#myhost \
     --use-remote-sudo
 ```
 
-初次连接还有两个小坑：目标机的 host key 不在 known_hosts 时命令会失败，先 `ssh-keyscan` 或手动登录一次；flake 模式下 nixos-rebuild 需要把你的配置仓库拷到构建侧，所以配置仓库必须是干净的 git 仓库（参见第 45 章问题「git tree is dirty」）。
+初次连接还有两个小坑：目标机的 host key 不在 known_hosts 时命令会失败，先 `ssh-keyscan` 或手动登录一次；flake 模式下 nixos-rebuild 需要把你的配置仓库拷到构建侧，所以配置仓库必须是干净的 git 仓库（参见第 46 章问题「git tree is dirty」）。
 
 **密钥分发问题**在这里第一次露头。配置里迟早会出现不能见人的东西：WireGuard 私钥、数据库口令、TLS 证书。而第 14 章讲过，`/nix/store` 全局可读——把明文密钥写进配置或 derivation 等于把钥匙挂在门上。于是「部署」除了三步之外，实际还有隐藏的第四步：**把密钥以安全方式送到目标机**。本章后续工具各有解法：colmena 有内建的 `deployment.keys`，nixos-anywhere 支持 `--disk-encryption-keys`，而更通用的方案是 sops-nix 与 agenix（用公钥加密后存仓库，在目标机上解密到 `/run/secrets`，不进 store）。此处先记住问题，后面看到工具时对号入座。
 

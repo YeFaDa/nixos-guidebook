@@ -69,11 +69,12 @@
 40. [交叉编译](chapters/ch40-cross.md)
 41. [测试与持续集成](chapters/ch41-ci.md)
 
-### 第六部分：实战（第 42–45 章）
+### 第六部分：实战（第 42–46 章）
 42. [从零打包一个软件：完整实战](chapters/ch42-package-walkthrough.md)
 43. [编写自己的 NixOS 模块](chapters/ch43-module-walkthrough.md)
 44. [Flake 应用开发模板](chapters/ch44-flake-templates.md)
-45. [常见问题与排错手册](chapters/ch45-troubleshooting.md)
+45. [用户环境与 home-manager](chapters/ch45-home-manager.md)
+46. [常见问题与排错手册](chapters/ch46-troubleshooting.md)
 
 ### 附录
 - [附录 A：Nix 语言速查表](appendix/appendix-a-cheatsheet.md)
@@ -83,10 +84,10 @@
 
 ## 完成状态与统计（2026-08-16）
 
-全书已完成：**45 章 + 4 个附录**，共 51 个文件。
+全书已完成：**46 章 + 4 个附录**，共 52 个文件。
 
-- 总计约 **15,900 行 / 53.7 万字符**（其中中文正文约 14.5 万字，其余为代码与英文术语）；
-- 按中文技术书籍常规排版（每页约 800–1000 字符）估算，约 **540–670 页**，满足「不少于 500 页」的目标；
+- 总计约 **16,070 行 / 54.7 万字符**（其中中文正文约 14.9 万字，其余为代码与英文术语）；
+- 按中文技术书籍常规排版（每页约 800–1000 字符）估算，约 **550–680 页**，满足「不少于 500 页」的目标；
 - 打包实例章（36–38）采用 nixpkgs master 分支 2026-08 的**真实源码逐行注释**（hello、figlet、fzf、ripgrep、requests 为完整逐字源码；linux 内核与 firefox 为结构精讲）；
 - 语言与打包章节全程标注 **✅ 现行规范 / ⚠️ 过渡机制 / ⛔ 已弃用写法**（finalAttrs、SRI 哈希、nixfmt-rfc-style、flakes 新命令等）。
 
@@ -108,3 +109,7 @@ bash build/build-pdf.sh                        # 产出 build/Nix与NixOS中文�
 - **入门路线**：第 1 → 4 → 5 → 6 → 13 → 14 章，然后直接安装 NixOS 边用边读第四部分。
 - **打包贡献路线**：第 4 → 6–12（语言）→ 32–38（nixpkgs 与实例）→ 42（实战）。
 - **深度理解路线**：按顺序通读，重点精读第 25（模块系统）与 34（mkDerivation）两章。
+
+## 来源与版权声明
+
+本书为个人学习笔记性质的整理汇编，内容参考并整理自 Nix / NixOS 官方手册、NixOS Wiki、nix.dev、nixpkgs 源码及社区公开资料（正文中尽可能标注了来源），仅供学习与研究参考，不作商业用途。书中引用的 nixpkgs 源码版权归其贡献者所有（MIT 许可证）。如有侵权或来源标注遗漏，请提 issue 或联系作者，将及时处理。在未补充正式许可证之前，本书内容默认保留所有权利，请勿整体转载。

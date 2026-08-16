@@ -64,7 +64,7 @@ merged config = merge(所有模块在 merged config 下的 config)
 即：先假设已有最终 config → 每个模块基于它求值 → 合并结果恰好收敛
 ```
 
-惰性求值（第 11 章）保证了这不是诡辩而是可行的算法：只要「模块 A 读的值不直接依赖 A 贡献的值」，图就是无环的，fixpoint 一层层展开即可。若真的成环（A 的值依赖自己），你会收到 Nix 最著名的报错：`infinite recursion encountered`（排错方法见第 25.7 节与第 45 章）。
+惰性求值（第 11 章）保证了这不是诡辩而是可行的算法：只要「模块 A 读的值不直接依赖 A 贡献的值」，图就是无环的，fixpoint 一层层展开即可。若真的成环（A 的值依赖自己），你会收到 Nix 最著名的报错：`infinite recursion encountered`（排错方法见第 25.7 节与第 46 章）。
 
 实际代码入口（nixpkgs/nixos/lib/eval-config.nix）：
 
@@ -170,7 +170,7 @@ $ nix eval .#nixosConfigurations.myhost.config.services.nginx.port
 2. **裸 if 替代 mkIf**：过早强制求值（25.5 节）。修：换 `mkIf`。
 3. **options/config 交叉**：把实现写进了 options 声明（或反之）。修：按合同归位。
 
-定位：`nix eval --show-trace`（第 45 章），堆栈里反复出现的选项名就是环所在。
+定位：`nix eval --show-trace`（第 46 章），堆栈里反复出现的选项名就是环所在。
 
 ## 25.8 注入参数：_module.args 与 specialArgs
 
