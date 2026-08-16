@@ -1,0 +1,7 @@
+# 导出的 PDF 不要进仓库
+build/*.pdf
+# Nix 构建产物
+result
+result-*
+.direnv/
+.envrc
